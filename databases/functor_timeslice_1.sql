@@ -19,6 +19,10 @@
 -- Table structure for table `cars`
 --
 
+CREATE DATABASE  IF NOT EXISTS `functor_timeslice_1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `functor_timeslice_1`;
+
+
 DROP TABLE IF EXISTS `cars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
