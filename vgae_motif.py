@@ -27,7 +27,7 @@ connection_bn = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password=
 cursor_bn = connection_bn.cursor()
 
 keys = {}
-cursor_setup.execute("SELECT TABLE_NAME FROM entitytables");
+cursor_setup.execute("SELECT TABLE_NAME FROM EntityTables");
 entity_tables = cursor_setup.fetchall()
 entities = {}
 for i in entity_tables:
@@ -62,7 +62,7 @@ relation_names = tuple(i[0] for i in relation_tables)
 
 indices = {}
 for i in entity_tables:
-    cursor_setup.execute("SELECT COLUMN_NAME FROM entitytables WHERE TABLE_NAME = '" + i[0] + "'")
+    cursor_setup.execute("SELECT COLUMN_NAME FROM EntityTables WHERE TABLE_NAME = '" + i[0] + "'")
     key = cursor_setup.fetchall()[0][0]
     indices[key] = {}
     for index, row in entities[i[0]].iterrows():
