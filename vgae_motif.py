@@ -477,7 +477,7 @@ class GAE(torch.nn.Module):
             self.decoder.forward_pairwise(z, pos_edge_index, sigmoid=True) + EPS).mean()
 
         if neg_edge_index is None:
-            neg_edge_index = negative_sampling(pos_edge_index, z.size(0), num_neg_samples = 2000)
+            neg_edge_index = negative_sampling(pos_edge_index, z.size(0), num_neg_samples = default)
         neg_loss = -torch.log(1 -
                               self.decoder.forward_pairwise(z, neg_edge_index, sigmoid=True) +
                               EPS).mean()
