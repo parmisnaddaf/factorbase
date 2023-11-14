@@ -293,7 +293,7 @@ for i in range(len(rules)):
         for k in base_indices[i]:
             masked_matrices.append(unmasked_matrices[k])
         for k in mask_indices[i]:
-            masked_matrices[k[0]] = multiply(masked_matrices[k[0]], unmasked_matrices[k[1]])
+            masked_matrices[k[0]] = multiply((masked_matrices[k[0]], unmasked_matrices[k[1]]), dtype=np.float32)
         sorted_matrices = []
         for k in sort_indices[i]:
             if k[0]:
