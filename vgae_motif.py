@@ -647,43 +647,42 @@ def train_motif():
         for j in values[i]:
             unmasked_matrices = []
             for k in range(len(rules[i])):
-                match states[i][k]:
-                    case 0:
-                        matrix = zeros((len(entities[nodes[i][k]].index), 1))
-                        for l in range(len(entities[nodes[i][k]][functors[i][k]])):
-                            value = entities[nodes[i][k]][functors[i][k]][l]
-                            if type(j[k+multiples[i]]) == str:
-                                if type(value) == int64 or type(value) == int32:
-                                    value = str(value)
-                                elif type(value) == float64 or type(value) == float32:
-                                    value = str(int(value))
-                            if value == j[k+multiples[i]]:
-                                matrix[indices[keys[nodes[i][k]]][entities[nodes[i][k]][keys[nodes[i][k]]][l]]][0] = 1
+                if states[i][k] ==  0:
+                    matrix = zeros((len(entities[nodes[i][k]].index), 1))
+                    for l in range(len(entities[nodes[i][k]][functors[i][k]])):
+                        value = entities[nodes[i][k]][functors[i][k]][l]
+                        if type(j[k+multiples[i]]) == str:
+                            if type(value) == int64 or type(value) == int32:
+                                value = str(value)
+                            elif type(value) == float64 or type(value) == float32:
+                                value = str(int(value))
+                        if value == j[k+multiples[i]]:
+                            matrix[indices[keys[nodes[i][k]]][entities[nodes[i][k]][keys[nodes[i][k]]][l]]][0] = 1
+                    unmasked_matrices.append(matrix)
+                elif states[i][k] ==  1:
+                    for l in masks[i][k]:
+                        matrix = zeros(matrices[l[0]].shape)
+                        for m in range(len(entities[nodes[i][k]][functors[i][k]])):
+                            if entities[nodes[i][k]][functors[i][k]][m] == j[k+multiples[i]]:
+                                if variables[i][k] == l[1]:
+                                    matrix[indices[keys[nodes[i][k]]][entities[nodes[i][k]][keys[nodes[i][k]]][m]],:] = 1
+                                elif variables[i][k] == l[2]:
+                                    matrix[:,indices[keys[nodes[i][k]]][entities[nodes[i][k]][keys[nodes[i][k]]][m]]] = 1
                         unmasked_matrices.append(matrix)
-                    case 1:
-                        for l in masks[i][k]:
-                            matrix = zeros(matrices[l[0]].shape)
-                            for m in range(len(entities[nodes[i][k]][functors[i][k]])):
-                                if entities[nodes[i][k]][functors[i][k]][m] == j[k+multiples[i]]:
-                                    if variables[i][k] == l[1]:
-                                        matrix[indices[keys[nodes[i][k]]][entities[nodes[i][k]][keys[nodes[i][k]]][m]],:] = 1
-                                    elif variables[i][k] == l[2]:
-                                        matrix[:,indices[keys[nodes[i][k]]][entities[nodes[i][k]][keys[nodes[i][k]]][m]]] = 1
-                            unmasked_matrices.append(matrix)
-                    case 2:
-                        if j[k+multiples[i]] == 'F':
-                            unmasked_matrices.append(1 - matrices[functors[i][k]])
-                        else:
-                            unmasked_matrices.append(matrices[functors[i][k]])
-                    case 3:
-                        if j[k+multiples[i]] == 'N/A':
-                            unmasked_matrices.append(1 - matrices[attributes[functors[i][k]]])
-                        else:
-                            matrix = zeros(matrices[attributes[functors[i][k]]].shape)
-                            for l in range(len(relations[attributes[functors[i][k]]][functors[i][k]])):
-                                if relations[attributes[functors[i][k]]][functors[i][k]][l] == j[k+multiples[i]]:
-                                    matrix[indices[keys[attributes[functors[i][k]]][0]][relations[attributes[functors[i][k]]][keys[attributes[functors[i][k]]][0]][l]]][indices[keys[attributes[functors[i][k]]][1]][relations[attributes[functors[i][k]]][keys[attributes[functors[i][k]]][1]][l]]] = 1 
-                            unmasked_matrices.append(matrix)
+                elif states[i][k] ==  2:
+                    if j[k+multiples[i]] == 'F':
+                        unmasked_matrices.append(1 - matrices[functors[i][k]])
+                    else:
+                        unmasked_matrices.append(matrices[functors[i][k]])
+                elif states[i][k] ==  3:
+                    if j[k+multiples[i]] == 'N/A':
+                        unmasked_matrices.append(1 - matrices[attributes[functors[i][k]]])
+                    else:
+                        matrix = zeros(matrices[attributes[functors[i][k]]].shape)
+                        for l in range(len(relations[attributes[functors[i][k]]][functors[i][k]])):
+                            if relations[attributes[functors[i][k]]][functors[i][k]][l] == j[k+multiples[i]]:
+                                matrix[indices[keys[attributes[functors[i][k]]][0]][relations[attributes[functors[i][k]]][keys[attributes[functors[i][k]]][0]][l]]][indices[keys[attributes[functors[i][k]]][1]][relations[attributes[functors[i][k]]][keys[attributes[functors[i][k]]][1]][l]]] = 1 
+                        unmasked_matrices.append(matrix)
             masked_matrices = []
             for k in base_indices[i]:
                 masked_matrices.append(unmasked_matrices[k])
