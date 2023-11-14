@@ -85,7 +85,7 @@ for i in relation_tables:
         matrices[i[0]][indices[reference[0][1]][row[key[0][0]]]][indices[reference[1][1]][row[key[1][0]]]] = 1
         
         
-cursor_setup.execute("SELECT COLUMN_NAME, TABLE_NAME FROM attributecolumns")
+cursor_setup.execute("SELECT COLUMN_NAME, TABLE_NAME FROM AttributeColumns")
 attribute_columns = cursor_setup.fetchall()
 attributes = {}
 for i in attribute_columns:
