@@ -267,7 +267,7 @@ for i in range(len(rules)):
                 unmasked_matrices.append(matrix)
             elif states[i][k]== 1:
                 for l in masks[i][k]:
-                    matrix = zeros(matrices[l[0]].shape)
+                    matrix = zeros(matrices[l[0]].shape,  dtype=np.float32)
                     for m in range(len(entities[nodes[i][k]][functors[i][k]])):
                         if entities[nodes[i][k]][functors[i][k]][m] == j[k+multiples[i]]:
                             if variables[i][k] == l[1]:
