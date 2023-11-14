@@ -350,7 +350,7 @@ for epoch in range(1, epochs + 1):
 
 
 
-import pymysql
+from pymysql import connect
 
 # Connect to the MySQL server
 connection = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db='binary_imdb')
