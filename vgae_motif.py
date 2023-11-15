@@ -14,7 +14,7 @@ import numpy as np
 
 
 
-db = db_name = "binary_imdb"
+db = db_name = "binary_acm"
 connection = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db=db)
 cursor = connection.cursor()
 
@@ -560,7 +560,7 @@ import numpy as np
 
 # dataset = Planetoid("\..", "Cora")
 # dataa = dataset[0]
-dataa = torch.load("/home/pnaddaf/factorbase/db/imdb.pt")
+dataa = torch.load("/home/pnaddaf/factorbase/db/acm.pt")
 dataa.train_mask = dataa.val_mask = dataa.test_mask = dataa.y = None
 
 # def binarize_node_features(data):
