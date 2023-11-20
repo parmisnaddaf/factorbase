@@ -239,7 +239,7 @@ for i in range(len(childs)):
     mask_indices.append(mask_indice)
     sort_indices.append(sort_indice)
     stack_indices.append(stack_indice)
-    cursor_bn.execute("SELECT * FROM `" + childs[i][0] + "_cp`")
+    cursor_bn.execute("SELECT * FROM `" + childs[i][0] + "_CP`")
     value = cursor_bn.fetchall()
     values.append(value)
     
