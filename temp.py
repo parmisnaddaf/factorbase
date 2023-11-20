@@ -313,7 +313,7 @@ import numpy as np
 
 
 
-# dataa = torch.load("/Users/parmis/Downloads/data.pt")
+dataa = torch.load("/home/pnaddaf/factorbase/db/acm.pt")
 dataa.train_mask = dataa.val_mask = dataa.test_mask = dataa.y = None
 
 # def binarize_node_features(data):
