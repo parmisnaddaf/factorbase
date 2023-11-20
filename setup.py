@@ -9,13 +9,13 @@ db_name = 'binary_acm'
 
 
 db = db_name
-connection = connect(host="localhost", user="admin", password="joinbayes", db=db)
+connection = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db=db)
 cursor = connection.cursor()
 db_setup = db_name + "_setup"
-connection_setup = connect(host="localhost", user="admin", password="joinbayes", db=db_setup)
+connection_setup = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db=db_setup)
 cursor_setup = connection_setup.cursor()
 db_bn = db_name + "_bn"
-connection_bn = connect(host="localhost", user="admin", password="joinbayes", db=db_bn)
+connection_bn = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db=db_bn)
 cursor_bn = connection_bn.cursor()
 
 
