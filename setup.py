@@ -92,7 +92,7 @@ for i in attribute_columns:
     
     
     
-cursor_bn.execute("SELECT DISTINCT child FROM final_path_bayesnets_view")
+cursor_bn.execute("SELECT DISTINCT child FROM Final_Path_BayesNets_view")
 childs = cursor_bn.fetchall()
 rules = []
 multiples = []
@@ -108,7 +108,7 @@ stack_indices = []
 values = []
 for i in range(len(childs)):
     rule = [childs[i][0]]
-    cursor_bn.execute("SELECT parent FROM final_path_bayesnets_view WHERE child = " + "'" + childs[i][0] + "'")
+    cursor_bn.execute("SELECT parent FROM Final_Path_BayesNets_view WHERE child = " + "'" + childs[i][0] + "'")
     parents = cursor_bn.fetchall()
     for j in parents:
         if j[0] != '':
