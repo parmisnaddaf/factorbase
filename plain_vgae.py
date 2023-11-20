@@ -244,7 +244,7 @@ from sklearn.decomposition import PCA
 
 # dataset = Planetoid("\..", "cora")
 # dataa = dataset[0]
-dataa = torch.load("/home/pnaddaf/factorbase/db/karate.pt")
+dataa = torch.load("/home/pnaddaf/factorbase/db/acm.pt")
 dataa.train_mask = dataa.val_mask = dataa.test_mask = dataa.y = None
 
 # def binarize_node_features(data):
@@ -353,7 +353,7 @@ for epoch in range(1, epochs + 1):
 from pymysql import connect
 
 # Connect to the MySQL server
-connection = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db='binary_karate')
+connection = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db='binary_acm')
 
 cursor = connection.cursor()
 
