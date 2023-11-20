@@ -22,7 +22,7 @@ cursor_bn = connection_bn.cursor()
 keys = {}
 
 
-cursor_setup.execute("SELECT TABLE_NAME FROM entitytables");
+cursor_setup.execute("SELECT TABLE_NAME FROM EntityTables");
 entity_tables = cursor_setup.fetchall()
 entities = {}
 for i in entity_tables:
@@ -31,7 +31,7 @@ for i in entity_tables:
     cursor.execute("SHOW COLUMNS FROM " + db + "." + i[0])
     columns = cursor.fetchall()
     entities[i[0]] = DataFrame(rows, columns=[columns[j][0] for j in range(len(columns))])
-    cursor_setup.execute("SELECT COLUMN_NAME FROM entitytables WHERE TABLE_NAME = " + "'" + i[0] + "'")
+    cursor_setup.execute("SELECT COLUMN_NAME FROM EntityTables WHERE TABLE_NAME = " + "'" + i[0] + "'")
     key = cursor_setup.fetchall()
     keys[i[0]] = key[0][0]
     
@@ -59,7 +59,7 @@ relation_names = tuple(i[0] for i in relation_tables)
 
 indices = {}
 for i in entity_tables:
-    cursor_setup.execute("SELECT COLUMN_NAME FROM entitytables WHERE TABLE_NAME = '" + i[0] + "'")
+    cursor_setup.execute("SELECT COLUMN_NAME FROM EntityTables WHERE TABLE_NAME = '" + i[0] + "'")
     key = cursor_setup.fetchall()[0][0]
     indices[key] = {}
     for index, row in entities[i[0]].iterrows():
