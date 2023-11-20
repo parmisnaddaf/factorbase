@@ -5,7 +5,7 @@ from itertools import permutations
 from pickle import dump, load
 
 
-rules, values, states, entities, nodes, functors, multiples, indices, keys, masks, variables, matrices, attributes, relations, base_indices, mask_indices, sort_indices, stack_indices = load(open("data.pkl", "rb"))
+rules, values, states, entities, nodes, functors, multiples, indices, keys, masks, variables, matrices, attributes, relations, base_indices, mask_indices, sort_indices, stack_indices = load(open("binary_acm_data.pkl", "rb"))
 
 
 ground_truth = []
