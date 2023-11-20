@@ -84,7 +84,7 @@ for i in relation_tables:
         
         
         
-cursor_setup.execute("SELECT COLUMN_NAME, TABLE_NAME FROM attributecolumns")
+cursor_setup.execute("SELECT COLUMN_NAME, TABLE_NAME FROM AttributeColumns")
 attribute_columns = cursor_setup.fetchall()
 attributes = {}
 for i in attribute_columns:
