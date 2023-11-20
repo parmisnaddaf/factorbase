@@ -14,7 +14,7 @@ cursor = connection.cursor()
 db_setup = db_name + "_setup"
 connection_setup = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db=db_setup)
 cursor_setup = connection_setup.cursor()
-db_bn = db_name + "_bn"
+db_bn = db_name + "_BN"
 connection_bn = connect(host="rcg-cs-ml-dev.dcr.sfu.ca", user="admin", password="joinbayes", db=db_bn)
 cursor_bn = connection_bn.cursor()
 
