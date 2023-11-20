@@ -38,7 +38,7 @@ CREATE TABLE `border` (
   KEY `FK_border_1` (`c1_id_dummy`),
   CONSTRAINT `FK_border_1` FOREIGN KEY (`c1_id_dummy`) REFERENCES `country` (`c1_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_border_2` FOREIGN KEY (`c1_id`) REFERENCES `country` (`c1_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DEFAULT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=FIXED;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `country` (
   KEY `country_percentage` (`percentage`),
   KEY `country_popu` (`popu`),
   KEY `country_class` (`class`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DEFAULT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=FIXED;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `ecoR` (
   KEY `FK_ecoR_2` (`eco_id`),
   CONSTRAINT `FK_ecoR_1` FOREIGN KEY (`c1_id`) REFERENCES `country` (`c1_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_ecoR_2` FOREIGN KEY (`eco_id`) REFERENCES `eco` (`eco_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DEFAULT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=FIXED;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
