@@ -253,7 +253,7 @@ dataa.train_mask = dataa.val_mask = dataa.test_mask = dataa.y = None
 
 
 
-def reduce_node_features(data, n_components=5):
+def reduce_node_features(data, n_components=10):
     pca = PCA(n_components=n_components)
     
     reduced_features = pca.fit_transform(data.x.numpy())
