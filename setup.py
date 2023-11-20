@@ -47,7 +47,7 @@ for i in relation_tables:
     cursor.execute("SHOW COLUMNS FROM " + db + "." + i[0])
     columns = cursor.fetchall()
     relations[i[0]] = DataFrame(rows, columns=[columns[j][0] for j in range(len(columns))])
-    cursor_setup.execute("SELECT COLUMN_NAME FROM foreignkeycolumns WHERE TABLE_NAME = " + "'" + i[0] + "'")
+    cursor_setup.execute("SELECT COLUMN_NAME FROM ForeignKeyColumns WHERE TABLE_NAME = " + "'" + i[0] + "'")
     key = cursor_setup.fetchall()
     keys[i[0]] = key[0][0], key[1][0]
     
@@ -69,15 +69,15 @@ for i in entity_tables:
 
 matrices = {}
 for i in relation_tables:
-    cursor_setup.execute("SELECT REFERENCED_TABLE_NAME FROM foreignkeycolumns WHERE TABLE_NAME = " + "'" + i[0] + "'")
+    cursor_setup.execute("SELECT REFERENCED_TABLE_NAME FROM ForeignKeyColumns WHERE TABLE_NAME = " + "'" + i[0] + "'")
     reference = cursor_setup.fetchall()
     matrices[i[0]] = zeros((len(entities[reference[0][0]].index), len(entities[reference[1][0]].index)))
     
     
 for i in relation_tables:
-    cursor_setup.execute("SELECT COLUMN_NAME FROM foreignkeycolumns WHERE TABLE_NAME = '" + i[0] + "'")
+    cursor_setup.execute("SELECT COLUMN_NAME FROM ForeignKeyColumns WHERE TABLE_NAME = '" + i[0] + "'")
     key = cursor_setup.fetchall()
-    cursor_setup.execute("SELECT COLUMN_NAME, REFERENCED_COLUMN_NAME FROM foreignkeycolumns WHERE TABLE_NAME = '" + i[0] + "'")
+    cursor_setup.execute("SELECT COLUMN_NAME, REFERENCED_COLUMN_NAME FROM ForeignKeyColumns WHERE TABLE_NAME = '" + i[0] + "'")
     reference = cursor_setup.fetchall()
     for index, row in relations[i[0]].iterrows():
         matrices[i[0]][indices[reference[0][1]][row[key[0][0]]]][indices[reference[1][1]][row[key[1][0]]]] = 1
