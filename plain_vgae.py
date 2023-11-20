@@ -296,7 +296,7 @@ class VariationalGCNEncoder(torch.nn.Module):
 
 out_channels = 48  
 num_features = 10  
-epochs = 100      
+epochs = 1      
 Lambda_dim = 32   
 
 node_trns_layers = [out_channels, 64, Lambda_dim]
