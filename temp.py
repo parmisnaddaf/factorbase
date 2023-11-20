@@ -312,9 +312,8 @@ import numpy as np
 # !pip install -q git+https://github.com/pyg-team/pytorch_geometric.git
 
 
-from torch_geometric.datasets import KarateClub
-dataa = KarateClub()[0]
-# dataa = torch.load("/Users/parmis/Downloads/acm.pt")
+
+# dataa = torch.load("/Users/parmis/Downloads/data.pt")
 dataa.train_mask = dataa.val_mask = dataa.test_mask = dataa.y = None
 
 # def binarize_node_features(data):
