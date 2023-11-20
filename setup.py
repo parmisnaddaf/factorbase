@@ -38,7 +38,7 @@ for i in entity_tables:
     
 
 
-cursor_setup.execute("SELECT TABLE_NAME FROM relationtables")
+cursor_setup.execute("SELECT TABLE_NAME FROM RelationTables  ")
 relation_tables = cursor_setup.fetchall()
 relations = {}
 for i in relation_tables:
